@@ -17,7 +17,6 @@ class App extends Component {
 
     this.handleCurrentPage = this.handleCurrentPage.bind(this);
     this.handleTotalPages = this.handleTotalPages.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleCurrentPage(event) {
@@ -30,11 +29,6 @@ class App extends Component {
     this.setState({
       totalPages: event.target.value,
     });
-  }
-
-  handleSubmit(event) {
-    console.log(Number(this.state.currentPage) + Number(this.state.totalPages))
-    event.preventDefault();
   }
 
   render() {
@@ -52,7 +46,6 @@ class App extends Component {
               className="total-pages"
               value={this.state.totalPages}
               onChange={event => this.handleTotalPages(event)}/>
-              <input type="submit" value="Submit" />
             </form>
             <TestComponent
               currentPage={currentPage}
