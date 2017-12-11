@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import moment from 'moment-es6';
 
-import TestComponent from './components/test_component'
+import Calculator from './components/calculator'
 
 class App extends Component {
   constructor(props) {
@@ -38,16 +37,18 @@ class App extends Component {
     return (
       <div>
         <form className="page-numbers-form" onSubmit={this.handleSubmit}>
+          Total Pages <input
+            type="number"
+            className="total-pages"
+            value={this.state.totalPages}
+            onChange={event => this.handleTotalPages(event)}/>
           Current Page <input
+            type="number"
             className="current-page"
             value={this.state.currentPage}
             onChange={event => this.handleCurrentPage(event)}/>
-            Total Pages <input
-              className="total-pages"
-              value={this.state.totalPages}
-              onChange={event => this.handleTotalPages(event)}/>
-            </form>
-            <TestComponent
+        </form>
+            <Calculator
               currentPage={currentPage}
               totalPages={totalPages}
             />
