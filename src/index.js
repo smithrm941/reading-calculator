@@ -38,7 +38,6 @@ class App extends Component {
   }
 
   handleTimeFrameType(event) {
-    //Need to figure out how to get singular at end of sentence
     this.setState({
       timeFrameType: event.target.value,
       singularTimeFrameType: event.target.value.slice(0, event.target.value.length - 1)
@@ -71,7 +70,7 @@ class App extends Component {
             value={this.state.timeFrameNumber}
             onChange={event => this.handleTimeFrameNumber(event)}/>
           <select
-            value={this.state.timeFrameNumber}
+            value={this.state.timeFrameType}
             onChange={event => this.handleTimeFrameType(event)}>
             <option value="days">Days</option>
             <option value="weeks">Weeks</option>
