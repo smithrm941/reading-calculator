@@ -7,3 +7,7 @@ body {
 ul {
   list-style-type: none;
 }
+
+.select {
+  width: 50%;
+}

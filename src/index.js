@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import registerServiceWorker from './registerServiceWorker';
 
@@ -15,7 +17,11 @@ class App extends Component {
       totalPages: '',
       timeFrameNumber: '',
       timeFrameType: 'days',
-      singularTimeFrameType: 'day'
+      singularTimeFrameType: 'day',
+
+      //Trying out date stuff:::::::::::::::::::::::
+      startDate: '',
+      endDate: '',
     }
   }
 
@@ -44,12 +50,29 @@ class App extends Component {
     });
   }
 
+  //Trying out date stuff:::::::::::::::::::::::
+  handleStartDate(event) {
+    this.setState({
+      startDate: event.target.value
+    })
+  }
+
+  handleEndDate(event) {
+    this.setState({
+      endDate: event.target.value
+    })
+  }
+
   render() {
     const currentPage = this.state.currentPage;
     const totalPages = this.state.totalPages;
     const timeFrameNumber = this.state.timeFrameNumber;
     const timeFrameType = this.state.timeFrameType;
     const singularTimeFrameType = this.state.singularTimeFrameType;
+
+    //Trying out date stuff:::::::::::::::::::::::
+    const startDate = this.state.startDate
+    const endDate = this.state.endDate
 
     return (
       <div>
@@ -86,13 +109,28 @@ class App extends Component {
                 className="time-frame-number"
                 value={this.state.timeFrameNumber}
                 onChange={event => this.handleTimeFrameNumber(event)}/>
-                <select
-                  value={this.state.timeFrameType}
-                  onChange={event => this.handleTimeFrameType(event)}>
-                  <option value="days">Days</option>
-                  <option value="weeks">Weeks</option>
-                  <option value="months">Months</option>
-                </select>
+              <select
+                value={this.state.timeFrameType}
+                onChange={event => this.handleTimeFrameType(event)}>
+                <option value="days">Days</option>
+                <option value="weeks">Weeks</option>
+                <option value="months">Months</option>
+              </select>
+            </li>
+            <br></br>
+
+            {/* //Trying out date stuff::::::::::::::::::::::: */}
+            <li>When did you start this book?</li>
+            <li><input
+              id="startDate"
+              type="date"
+              onChange={event => this.handleStartDate(event)}/>
+            </li>
+            <li>When do you want to finish this book?</li>
+            <li><input
+              id="endDate"
+              type="date"
+              onChange={event => this.handleEndDate(event)}/>
             </li>
           </ul>
         </form>
@@ -102,6 +140,10 @@ class App extends Component {
           timeFrameNumber={timeFrameNumber}
           timeFrameType={timeFrameType}
           singularTimeFrameType={singularTimeFrameType}
+
+          //Trying out date stuff:::::::::::::::::::::::
+          startDate={startDate}
+          endDate={endDate}
         />
       </div>
     )
