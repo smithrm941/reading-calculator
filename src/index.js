@@ -19,7 +19,6 @@ class App extends Component {
       timeFrameNumber: '',
       timeFrameType: 'days',
       singularTimeFrameType: 'day',
-      //Trying out date stuff:::::::::::::::::::::::
       startDate: '',
       endDate: '',
     }
@@ -98,8 +97,6 @@ class App extends Component {
                 value={this.state.currentPage}
                 onChange={event => this.handleCurrentPage(event)}/>
             </li>
-
-            {/* //How do I toggle between this and the date stuff???? */}
             <li>
               When do you want to be done with your book?
             </li>
