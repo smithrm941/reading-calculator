@@ -12,40 +12,47 @@ class NoDateCalculator extends Component {
     const pagesPerTimeFrame = Math.round(pagesLeft/timeFrameNumber)
 
 
-    if (!timeFrameNumber) {
+    if(!totalPages || !currentPage) {
       return (
         <div>
         </div>
       )
-    } else if (timeFrameNumber <= 1) {
-      return (
-        <div>
-          <h1>Based on the time frame you chose:</h1>
-          <h1>You can finish this book in one {singularTimeFrameType} by reading {pagesLeft} pages per {singularTimeFrameType}</h1>
-        </div>
-      )
-    } else {
-      if(timeFrameType === "weeks") {
+    } else if (totalPages && currentPage) {
+      if (!timeFrameNumber) {
         return (
           <div>
-            <h1>Based on the time frame you chose:</h1>
-            <h1>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {Math.round(pagesPerTimeFrame/7)} pages per day.</h1>
           </div>
         )
-      } else if(timeFrameType === "months") {
+      } else if (timeFrameNumber <= 1) {
         return (
           <div>
             <h1>Based on the time frame you chose:</h1>
-            <h1>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {Math.round(pagesPerTimeFrame/30)} pages per day.</h1>
+            <h3>You can finish this book in one {singularTimeFrameType} by reading {pagesLeft} pages per {singularTimeFrameType}</h3>
           </div>
         )
       } else {
-        return (
-          <div>
-            <h1>Based on the time frame you chose:</h1>
-            <h1>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {pagesPerTimeFrame} pages per day.</h1>
-          </div>
-        )
+        if(timeFrameType === "weeks") {
+          return (
+            <div>
+              <h1>Based on the time frame you chose:</h1>
+              <h3>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {Math.round(pagesPerTimeFrame/7)} pages per day.</h3>
+            </div>
+          )
+        } else if(timeFrameType === "months") {
+          return (
+            <div>
+              <h1>Based on the time frame you chose:</h1>
+              <h3>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {Math.round(pagesPerTimeFrame/30)} pages per day.</h3>
+            </div>
+          )
+        } else {
+          return (
+            <div>
+              <h1>Based on the time frame you chose:</h1>
+              <h3>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {pagesPerTimeFrame} pages per day.</h3>
+            </div>
+          )
+        }
       }
     }
   }

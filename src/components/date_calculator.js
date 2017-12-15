@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Calculator extends Component {
+class DateCalculator extends Component {
 
   render() {
     const currentPage = this.props.currentPage
@@ -32,14 +32,14 @@ class Calculator extends Component {
         return (
           <div>
             <h1>Based on the dates you chose:</h1>
-            <h1>You can finish this book on time if you read {pagesLeft} pages per day!</h1>
+            <h3>You can finish this book on time if you read {pagesLeft} pages per day!</h3>
           </div>
         )
       } else if(Math.round(pagesLeft/daysBetweenDates(startDate, endDate)) > 0) {
         return (
           <div>
             <h1>Based on the dates you chose:</h1>
-            <h1>You can finish this book on time if you read {Math.round(pagesLeft/daysBetweenDates(startDate, endDate))} pages per day!</h1>
+            <h3>You can finish this book on time if you read {Math.round(pagesLeft/daysBetweenDates(startDate, endDate))} pages per day!</h3>
           </div>
         )
       }
@@ -47,4 +47,4 @@ class Calculator extends Component {
   }
 }
 
-export default Calculator;
+export default DateCalculator;

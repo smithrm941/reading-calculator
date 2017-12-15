@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import registerServiceWorker from './registerServiceWorker';
 
-import Calculator from './components/calculator'
+import DateCalculator from './components/date_calculator'
 import NoDateCalculator from './components/no_date_calculator'
 
 class App extends Component {
@@ -134,7 +134,7 @@ class App extends Component {
         </form>
         <h1>Pages Left: {pagesLeft}</h1>
 
-        <Calculator
+        <DateCalculator
           totalPages={totalPages}
           currentPage={currentPage}
           pagesLeft={pagesLeft}
