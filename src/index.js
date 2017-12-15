@@ -50,7 +50,6 @@ class App extends Component {
     });
   }
 
-  //Trying out date stuff:::::::::::::::::::::::
   handleStartDate(event) {
     this.setState({
       startDate: event.target.value
@@ -66,11 +65,10 @@ class App extends Component {
   render() {
     const currentPage = this.state.currentPage;
     const totalPages = this.state.totalPages;
+    const pagesLeft = totalPages - currentPage;
     const timeFrameNumber = this.state.timeFrameNumber;
     const timeFrameType = this.state.timeFrameType;
     const singularTimeFrameType = this.state.singularTimeFrameType;
-
-    //Trying out date stuff:::::::::::::::::::::::
     const startDate = this.state.startDate
     const endDate = this.state.endDate
 
@@ -134,10 +132,12 @@ class App extends Component {
             </li>
           </ul>
         </form>
+        <h1>Pages Left: {pagesLeft}</h1>
 
         <Calculator
           totalPages={totalPages}
           currentPage={currentPage}
+          pagesLeft={pagesLeft}
           timeFrameNumber={timeFrameNumber}
           timeFrameType={timeFrameType}
           singularTimeFrameType={singularTimeFrameType}
@@ -148,6 +148,7 @@ class App extends Component {
         <NoDateCalculator
           totalPages={totalPages}
           currentPage={currentPage}
+          pagesLeft={pagesLeft}
           timeFrameNumber={timeFrameNumber}
           timeFrameType={timeFrameType}
           singularTimeFrameType={singularTimeFrameType}
