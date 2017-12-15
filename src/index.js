@@ -8,8 +8,19 @@ import registerServiceWorker from './registerServiceWorker';
 
 import DateCalculator from './components/date_calculator'
 import NoDateCalculator from './components/no_date_calculator'
+import books from 'google-books-search'
+
 
 class App extends Component {
+  componentDidMount() {
+    books.search('Professional JavaScript for Web Developers', function(error, results) {
+      if ( ! error ) {
+          console.log(results[1].pageCount, results[1].title);
+      } else {
+          console.log(error);
+      }
+    });
+  }
   constructor(props) {
     super(props);
 
@@ -23,6 +34,8 @@ class App extends Component {
       endDate: '',
     }
   }
+
+
 
   handleCurrentPage(event) {
     this.setState({
