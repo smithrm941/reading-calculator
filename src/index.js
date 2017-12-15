@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 import registerServiceWorker from './registerServiceWorker';
 
 import Calculator from './components/calculator'
+import NoDateCalculator from './components/no_date_calculator'
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +19,6 @@ class App extends Component {
       timeFrameNumber: '',
       timeFrameType: 'days',
       singularTimeFrameType: 'day',
-
       //Trying out date stuff:::::::::::::::::::::::
       startDate: '',
       endDate: '',
@@ -100,6 +100,8 @@ class App extends Component {
                 value={this.state.currentPage}
                 onChange={event => this.handleCurrentPage(event)}/>
             </li>
+
+            {/* //How do I toggle between this and the date stuff???? */}
             <li>
               When do you want to be done with your book?
             </li>
@@ -118,9 +120,7 @@ class App extends Component {
               </select>
             </li>
             <br></br>
-
-            {/* //Trying out date stuff::::::::::::::::::::::: */}
-            <li>When did you start this book?</li>
+            <li>When do you want to start reading?</li>
             <li><input
               id="startDate"
               type="date"
@@ -134,17 +134,27 @@ class App extends Component {
             </li>
           </ul>
         </form>
+
         <Calculator
           totalPages={totalPages}
           currentPage={currentPage}
           timeFrameNumber={timeFrameNumber}
           timeFrameType={timeFrameType}
           singularTimeFrameType={singularTimeFrameType}
-
-          //Trying out date stuff:::::::::::::::::::::::
           startDate={startDate}
           endDate={endDate}
         />
+
+        <NoDateCalculator
+          totalPages={totalPages}
+          currentPage={currentPage}
+          timeFrameNumber={timeFrameNumber}
+          timeFrameType={timeFrameType}
+          singularTimeFrameType={singularTimeFrameType}
+          startDate={startDate}
+          endDate={endDate}
+        />
+
       </div>
     )
   }
