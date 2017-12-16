@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -8,22 +9,16 @@ import registerServiceWorker from './registerServiceWorker';
 
 import DateCalculator from './components/date_calculator'
 import NoDateCalculator from './components/no_date_calculator'
+import BookSearch from './components/book_search'
+
+
+//Google API stuff:::::::::
 import books from 'google-books-search'
 
 
 class App extends Component {
-  componentDidMount() {
-    books.search('Professional JavaScript for Web Developers', function(error, results) {
-      if ( ! error ) {
-          console.log(results[1].pageCount, results[1].title);
-      } else {
-          console.log(error);
-      }
-    });
-  }
   constructor(props) {
     super(props);
-
     this.state = {
       currentPage: '',
       totalPages: '',
@@ -32,9 +27,29 @@ class App extends Component {
       singularTimeFrameType: 'day',
       startDate: '',
       endDate: '',
+      books: []
     }
   }
 
+  //Google API stuff:::::::::
+  handleSearchResult(foundBooks) {
+    this.setState({
+      books: foundBooks,
+    });
+  }
+
+  bookSearch(term) {
+    books.search(term, (error, results) => {
+      if ( ! error ) {
+        console.log('Argh:::::', results)
+        this.handleSearchResult(results)
+      } else {
+        console.log(error);
+      }
+    })
+  };
+
+  //Google API stuff:::::::::
 
 
   handleCurrentPage(event) {
@@ -75,21 +90,32 @@ class App extends Component {
   }
 
   render() {
+    // const bookSearch = _.debounce((term) => { this.bookSearch(term) }, 300)
+
     const currentPage = this.state.currentPage;
     const totalPages = this.state.totalPages;
     const pagesLeft = totalPages - currentPage;
     const timeFrameNumber = this.state.timeFrameNumber;
     const timeFrameType = this.state.timeFrameType;
     const singularTimeFrameType = this.state.singularTimeFrameType;
-    const startDate = this.state.startDate
-    const endDate = this.state.endDate
+    const startDate = this.state.startDate;
+    const endDate = this.state.endDate;
 
     return (
       <div>
         <h1>How Many Pages Per Day to Finish That Book?*</h1>
         <h6>*<i>Approximately</i></h6>
-        <form className="page-numbers-form" onSubmit={this.handleSubmit}>
+        <form className="page-numbers-form">
           <ul>
+
+
+            {/* //Google API Stuff:::: */}
+            <li>
+              <BookSearch onSearchTermChange={term => this.bookSearch(term)}/>
+            </li>
+            {/* //Google API Stuff:::: */}
+
+
             <li>
               How many pages are in that book?
             </li>
@@ -170,6 +196,7 @@ class App extends Component {
     )
   }
 }
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
