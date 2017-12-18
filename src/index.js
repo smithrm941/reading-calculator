@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -10,6 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 import DateCalculator from './components/date_calculator'
 import NoDateCalculator from './components/no_date_calculator'
 import BookSearch from './components/book_search'
+import SearchResults from './components/search_results'
 
 
 //Google API stuff:::::::::
@@ -31,26 +31,22 @@ class App extends Component {
     }
   }
 
-  //Google API stuff:::::::::
-  handleSearchResult(foundBooks) {
-    this.setState({
-      books: foundBooks,
-    });
-  }
-
   bookSearch(term) {
-    books.search(term, (error, results) => {
+    let options = {
+      key: "AIzaSyD1IH_K05B722zRd4ZZZsh-RRuPhaN7-sg",
+    };
+    books.search(term, options.key, (error, results) => {
       if ( ! error ) {
         console.log('Argh:::::', results)
-        this.handleSearchResult(results)
+        // this.handleSearchResult(results)
+        this.setState({
+          books: results,
+        });
       } else {
         console.log(error);
       }
     })
   };
-
-  //Google API stuff:::::::::
-
 
   handleCurrentPage(event) {
     this.setState({
@@ -90,8 +86,7 @@ class App extends Component {
   }
 
   render() {
-    // const bookSearch = _.debounce((term) => { this.bookSearch(term) }, 300)
-
+    const books = this.state.books;
     const currentPage = this.state.currentPage;
     const totalPages = this.state.totalPages;
     const pagesLeft = totalPages - currentPage;
@@ -115,7 +110,9 @@ class App extends Component {
             </li>
             {/* //Google API Stuff:::: */}
 
-
+            <li>
+              <SearchResults books={books}/>
+            </li>
             <li>
               How many pages are in that book?
             </li>
