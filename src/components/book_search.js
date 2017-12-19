@@ -5,7 +5,7 @@ class BookSearch extends Component {
     super(props);
     this.state = {
       //Google API stuff:::::::::
-      term: '',
+      searchTerm: '',
     }
     // this.bookSearch('Motorhead');
   }

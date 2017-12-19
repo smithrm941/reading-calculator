@@ -1,9 +1,10 @@
 import React from 'react';
 
-const IndividualBook = ({book}) => {
+const IndividualBook = ({book, onBookSelect}) => {
   return (
-    <li>
+    <li onClick={() => onBookSelect(book)}>
       <h6>{book.title}</h6>
+      <img className="media-object" src={book.thumbnail}/>
     </li>
   )
 }

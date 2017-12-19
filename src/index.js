@@ -27,7 +27,8 @@ class App extends Component {
       singularTimeFrameType: 'day',
       startDate: '',
       endDate: '',
-      books: []
+      books: [],
+      selectedBook: null,
     }
   }
 
@@ -38,7 +39,6 @@ class App extends Component {
     books.search(term, options.key, (error, results) => {
       if ( ! error ) {
         console.log('Argh:::::', results)
-        // this.handleSearchResult(results)
         this.setState({
           books: results,
         });
@@ -111,7 +111,13 @@ class App extends Component {
             {/* //Google API Stuff:::: */}
 
             <li>
-              <SearchResults books={books}/>
+              <SearchResults
+                books={books}
+                onBookSelect={selectedBook =>
+                  this.setState({
+                    selectedBook: selectedBook,
+                    totalPages: selectedBook.pageCount})}
+              />
             </li>
             <li>
               How many pages are in that book?
