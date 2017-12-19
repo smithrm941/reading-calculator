@@ -100,16 +100,15 @@ class App extends Component {
       <div>
         <h1>How Many Pages Per Day to Finish That Book?*</h1>
         <h6>*<i>Approximately</i></h6>
+        <b>Bold text</b> = required
         <form className="page-numbers-form">
           <ul>
-
-
-            {/* //Google API Stuff:::: */}
+            <li>
+              What book are you reading?
+            </li>
             <li>
               <BookSearch onSearchTermChange={term => this.bookSearch(term)}/>
             </li>
-            {/* //Google API Stuff:::: */}
-
             <li>
               <SearchResults
                 books={books}
@@ -117,10 +116,11 @@ class App extends Component {
                   this.setState({
                     selectedBook: selectedBook,
                     totalPages: selectedBook.pageCount})}
+                    //What if a book does not have page count????
               />
             </li>
             <li>
-              How many pages are in that book?
+              <b>How many pages are in that book?</b>
             </li>
             <li>
               <input
@@ -138,9 +138,13 @@ class App extends Component {
                 className="current-page"
                 value={this.state.currentPage}
                 onChange={event => this.handleCurrentPage(event)}/>
+                {/* //What if you don't have current page because you haven't started the book? */}
             </li>
             <li>
-              When do you want to be done with your book?
+              <b>When do you want to be done with your book?</b>
+            </li>
+            <li>
+              <i>Choose a time frame:</i>
             </li>
             <li>
               <input
@@ -157,6 +161,9 @@ class App extends Component {
               </select>
             </li>
             <br></br>
+            <li>
+              <i>Or choose specific dates:</i>
+            </li>
             <li>When do you want to start reading?</li>
             <li><input
               id="startDate"
@@ -172,6 +179,8 @@ class App extends Component {
           </ul>
         </form>
         <h1>Pages Left: {pagesLeft}</h1>
+        {/* //can an if statement depending on whether selectedBook.pageCount is NaN be used here?
+          or have pagesLeft only if totalPages is a number/if totalPages exists among the consts above the return*/}
 
         <DateCalculator
           totalPages={totalPages}

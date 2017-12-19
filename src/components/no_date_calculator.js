@@ -11,25 +11,42 @@ class NoDateCalculator extends Component {
     const pagesLeft = this.props.pagesLeft
     const pagesPerTimeFrame = Math.round(pagesLeft/timeFrameNumber)
 
-
-    if(!totalPages || !currentPage) {
+    //somehwere here, make no total pages mean you have to manually enter a page count
+    //DONE: also, if you have no current page, do a calculation with the whole book
+    if(!totalPages) {
       return (
         <div>
         </div>
       )
-    } else if (totalPages && currentPage) {
+    } else if ((totalPages && currentPage) || (totalPages && !currentPage)) {
       if (!timeFrameNumber) {
         return (
           <div>
           </div>
         )
       } else if (timeFrameNumber <= 1) {
-        return (
-          <div>
-            <h1>Based on the time frame you chose:</h1>
-            <h3>You can finish this book in one {singularTimeFrameType} by reading {pagesLeft} pages per {singularTimeFrameType}</h3>
-          </div>
-        )
+          if(timeFrameType === "weeks") {
+            return (
+              <div>
+                <h1>Based on the time frame you chose:</h1>
+                <h3>You can finish this book in one {singularTimeFrameType} by reading {Math.round(pagesPerTimeFrame/7)} pages per day.</h3>
+              </div>
+            )
+          } else if(timeFrameType === "months"){
+            return (
+              <div>
+                <h1>Based on the time frame you chose:</h1>
+                <h3>You can finish this book in one {singularTimeFrameType} by reading {Math.round(pagesPerTimeFrame/30)} pages per day.</h3>
+              </div>
+            )
+          } else {
+            return (
+              <div>
+                <h1>Based on the time frame you chose:</h1>
+                <h3>You can finish this book in one {singularTimeFrameType} by reading {pagesPerTimeFrame} pages per day.</h3>
+              </div>
+            )
+          }
       } else {
         if(timeFrameType === "weeks") {
           return (
