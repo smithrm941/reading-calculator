@@ -17,12 +17,12 @@ class DateCalculator extends Component {
       return Math.round(difference_ms/one_day)
     }
 
-    if(!totalPages || !currentPage) {
+    if(!totalPages) {
       return (
         <div>
         </div>
       )
-    } else if (totalPages && currentPage) {
+    } else if ((totalPages && currentPage) || (totalPages && !currentPage)) {
       if(!this.props.startDate || !this.props.endDate) {
         return (
           <div>

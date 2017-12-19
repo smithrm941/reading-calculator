@@ -138,7 +138,6 @@ class App extends Component {
                 className="current-page"
                 value={this.state.currentPage}
                 onChange={event => this.handleCurrentPage(event)}/>
-                {/* //What if you don't have current page because you haven't started the book? */}
             </li>
             <li>
               <b>When do you want to be done with your book?</b>
@@ -179,8 +178,6 @@ class App extends Component {
           </ul>
         </form>
         <h1>Pages Left: {pagesLeft}</h1>
-        {/* //can an if statement depending on whether selectedBook.pageCount is NaN be used here?
-          or have pagesLeft only if totalPages is a number/if totalPages exists among the consts above the return*/}
 
         <DateCalculator
           totalPages={totalPages}
