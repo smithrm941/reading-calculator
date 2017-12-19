@@ -33,19 +33,26 @@ class App extends Component {
   }
 
   bookSearch(term) {
-    let options = {
-      key: "AIzaSyD1IH_K05B722zRd4ZZZsh-RRuPhaN7-sg",
-    };
-    books.search(term, options.key, (error, results) => {
-      if ( ! error ) {
-        console.log('Argh:::::', results)
-        this.setState({
-          books: results,
-        });
-      } else {
-        console.log(error);
-      }
-    })
+    if(term) {
+      let options = {
+        key: "AIzaSyA-hcW9aeCUWMPs4UBuM3NCI-P4GTxeVHM",
+      };
+      books.search(term, options, (error, results) => {
+        if ( !error ) {
+          console.log('Argh:::::', results)
+          this.setState({
+            books: results,
+          });
+        } else {
+          console.log(error);
+        }
+      })
+    } else if (term === '') {
+      console.log(term)
+      this.setState({
+        books: []
+      });
+    }
   };
 
   handleCurrentPage(event) {
@@ -116,7 +123,6 @@ class App extends Component {
                   this.setState({
                     selectedBook: selectedBook,
                     totalPages: selectedBook.pageCount})}
-                    //What if a book does not have page count????
               />
             </li>
             <li>

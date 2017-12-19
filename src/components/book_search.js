@@ -4,7 +4,7 @@ class BookSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchsearchTerm: '',
+      searchTerm: '',
     }
   }
 

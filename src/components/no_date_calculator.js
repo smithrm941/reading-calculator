@@ -11,8 +11,6 @@ class NoDateCalculator extends Component {
     const pagesLeft = this.props.pagesLeft
     const pagesPerTimeFrame = Math.round(pagesLeft/timeFrameNumber)
 
-    //somehwere here, make no total pages mean you have to manually enter a page count
-    //DONE: also, if you have no current page, do a calculation with the whole book
     if(!totalPages) {
       return (
         <div>
