@@ -28,7 +28,7 @@ class App extends Component {
       startDate: '',
       endDate: '',
       books: [],
-      selectedBook: null,
+      selectedBook: 'No book selected',
     }
   }
 
@@ -50,7 +50,9 @@ class App extends Component {
     } else if (term === '') {
       console.log(term)
       this.setState({
-        books: []
+        books: [],
+        selectedBook: 'No book selected',
+        totalPages: ''
       });
     }
   };
@@ -94,6 +96,10 @@ class App extends Component {
 
   render() {
     const books = this.state.books;
+
+    //WIP: Getting book titles to display:::::
+    const selectedBook = this.state.selectedBook;
+
     const currentPage = this.state.currentPage;
     const totalPages = this.state.totalPages;
     const pagesLeft = totalPages - currentPage;
@@ -104,6 +110,21 @@ class App extends Component {
     const endDate = this.state.endDate;
 
     return (
+      //Maybe this big chunk before selected book and page left should be its
+      //own component and this return should depend on if selectedBook is undefined or not???
+      //like
+      //if(!selectedBook){
+      // return(
+      //    <BookInputs />
+      //    <h1>Pages Left: {pagesLeft}</h1>
+      //  )
+      // } else {
+      // return(
+      //    <BookInputs />
+      //    <h1>Selected Book: {selectedBook}</h1>
+      //    <h1>Pages Left: {pagesLeft}</h1>
+      // )
+      // }
       <div>
         <h1>How Many Pages Per Day to Finish That Book?*</h1>
         <h6>*<i>Approximately</i></h6>
@@ -183,6 +204,10 @@ class App extends Component {
             </li>
           </ul>
         </form>
+
+
+        {/* WIP: Getting book titles to display::::: */}
+        <h1>Selected Book: {selectedBook.title}</h1>
         <h1>Pages Left: {pagesLeft}</h1>
 
         <DateCalculator
