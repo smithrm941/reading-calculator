@@ -35,7 +35,7 @@ class App extends Component {
   bookSearch(term) {
     if(term) {
       let options = {
-        key: process.env.REACT_APP_GOOGLE_BOOKS_API_KEY
+        key: process.env.REACT_APP_GOOGLE_BOOKS_API_KEY,
       };
       books.search(term, options, (error, results) => {
         if ( !error ) {
