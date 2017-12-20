@@ -15,3 +15,7 @@ ul {
 h3 {
   text-indent: 5%;
 }
+
+.book-cover {
+  cursor: pointer;
+}
