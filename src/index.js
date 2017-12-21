@@ -10,6 +10,7 @@ import DateCalculator from './components/date_calculator'
 import NoDateCalculator from './components/no_date_calculator'
 import BookSearch from './components/book_search'
 import SearchResults from './components/search_results'
+import IndividualBook from './components/individual_book'
 
 
 //Google API stuff:::::::::
@@ -39,7 +40,6 @@ class App extends Component {
       };
       books.search(term, options, (error, results) => {
         if ( !error ) {
-          console.log('Argh:::::', results)
           this.setState({
             books: results,
           });
@@ -58,21 +58,39 @@ class App extends Component {
   };
 
   handleCurrentPage(event) {
-    this.setState({
-      currentPage: event.target.value,
-    });
+    if(event.target.value < 0) {
+      this.setState({
+        currentPage: Math.abs(event.target.value),
+      });
+    } else {
+      this.setState({
+        currentPage: event.target.value,
+      });
+    }
   }
 
   handleTotalPages(event) {
-    this.setState({
-      totalPages: event.target.value,
-    });
+    if(event.target.value < 0) {
+      this.setState({
+        totalPages: Math.abs(event.target.value),
+      });
+    } else {
+      this.setState({
+        totalPages: event.target.value,
+      });
+    }
   }
 
   handleTimeFrameNumber(event) {
-    this.setState({
-      timeFrameNumber: event.target.value,
-    });
+    if(event.target.value < 0) {
+      this.setState({
+        timeFrameNumber: Math.abs(event.target.value),
+      });
+    } else {
+      this.setState({
+        timeFrameNumber: event.target.value,
+      });
+    }
   }
 
   handleTimeFrameType(event) {
@@ -110,21 +128,6 @@ class App extends Component {
     const endDate = this.state.endDate;
 
     return (
-      //Maybe this big chunk before selected book and page left should be its
-      //own component and this return should depend on if selectedBook is undefined or not???
-      //like
-      //if(!selectedBook){
-      // return(
-      //    <BookInputs />
-      //    <h1>Pages Left: {pagesLeft}</h1>
-      //  )
-      // } else {
-      // return(
-      //    <BookInputs />
-      //    <h1>Selected Book: {selectedBook}</h1>
-      //    <h1>Pages Left: {pagesLeft}</h1>
-      // )
-      // }
       <div>
         <h1>How Many Pages Per Day to Finish That Book?*</h1>
         <h6>*<i>Approximately</i></h6>
@@ -143,6 +146,9 @@ class App extends Component {
                 onBookSelect={selectedBook =>
                   this.setState({
                     selectedBook: selectedBook,
+                    //want to make other books off screen when a book is selected
+                    //but also how do we display the book on the page at the same time?
+                    books: [],
                     totalPages: selectedBook.pageCount})}
               />
             </li>
@@ -152,6 +158,7 @@ class App extends Component {
             <li>
               <input
                 type="number"
+                min="0"
                 className="total-pages"
                 value={this.state.totalPages}
                 onChange={event => this.handleTotalPages(event)}/>
@@ -162,6 +169,7 @@ class App extends Component {
             <li>
               <input
                 type="number"
+                min="0"
                 className="current-page"
                 value={this.state.currentPage}
                 onChange={event => this.handleCurrentPage(event)}/>
@@ -175,6 +183,7 @@ class App extends Component {
             <li>
               <input
                 type="number"
+                min="1"
                 className="time-frame-number"
                 value={this.state.timeFrameNumber}
                 onChange={event => this.handleTimeFrameNumber(event)}/>
@@ -205,10 +214,19 @@ class App extends Component {
           </ul>
         </form>
 
-
-        {/* WIP: Getting book titles to display::::: */}
-        <h1>Selected Book: {selectedBook.title}</h1>
-        <h1>Pages Left: {pagesLeft}</h1>
+        {/* maybe this stuff should be in its own component? Then pages left can be rendered conditionally? */}
+        {/* ??????Hmmm, why are these things not being passed to the new component??????? */}
+          {/* <h1>Selected Book: {selectedBook.title}</h1>
+          <img alt="No book selected or cover not available" src={selectedBook.thumbnail} />
+          <h1>Pages Left: {pagesLeft}</h1> */}
+        {/* have some sort of condition where total pages cannot be less than current page */}
+        <IndividualBook
+          selectedBook={selectedBook.title}
+          coverPhoto={selectedBook.thumbnail}
+          totalPages={totalPages}
+          currentPage={currentPage}
+          pagesLeft={pagesLeft}
+        />
 
         <DateCalculator
           totalPages={totalPages}

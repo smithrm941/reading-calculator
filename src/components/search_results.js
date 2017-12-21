@@ -1,21 +1,21 @@
 import React from 'react';
 
-import IndividualBook from './individual_book'
+import SelectedBook from './selected_book'
 
 const SearchResults = (props) => {
-  const individualBooks = props.books.map((book) => {
+  const individualSearchResults = props.books.map((book) => {
     if(book.pageCount) {
       return (
-        <IndividualBook
-          onBookSelect={props.onBookSelect}
-          key={book.id}
-          book={book}/>
-        );
+          <SelectedBook
+            onBookSelect={props.onBookSelect}
+            key={book.id}
+            book={book}/>
+      );
     }
   })
   return (
-    <ul className="list-group">
-      {individualBooks}
+    <ul className="search-results">
+      {individualSearchResults}
     </ul>
   )
 }
