@@ -120,7 +120,13 @@ class App extends Component {
 
     const currentPage = this.state.currentPage;
     const totalPages = this.state.totalPages;
-    const pagesLeft = totalPages - currentPage;
+    const pagesLeft = () => {
+      if(isNaN(totalPages)) {
+        'please enter total pages in book'
+      } else {
+        totalPages - currentPage
+      }
+    };
     const timeFrameNumber = this.state.timeFrameNumber;
     const timeFrameType = this.state.timeFrameType;
     const singularTimeFrameType = this.state.singularTimeFrameType;
