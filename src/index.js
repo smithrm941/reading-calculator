@@ -127,13 +127,7 @@ class App extends Component {
     const enteredBook = this.state.enteredBook;
     const currentPage = this.state.currentPage;
     const totalPages = this.state.totalPages;
-    const pagesLeft = () => {
-      if(isNaN(totalPages)) {
-        'please enter total pages in book'
-      } else {
-        totalPages - currentPage
-      }
-    };
+    const pagesLeft = totalPages - currentPage
     const timeFrameNumber = this.state.timeFrameNumber;
     const timeFrameType = this.state.timeFrameType;
     const singularTimeFrameType = this.state.singularTimeFrameType;
@@ -235,12 +229,6 @@ class App extends Component {
           </ul>
         </form>
 
-        {/* maybe this stuff should be in its own component? Then pages left can be rendered conditionally? */}
-        {/* ??????Hmmm, why are these things not being passed to the new component??????? */}
-          {/* <h1>Selected Book: {selectedBook.title}</h1>
-          <img alt="No book selected or cover not available" src={selectedBook.thumbnail} />
-          <h1>Pages Left: {pagesLeft}</h1> */}
-        {/* have some sort of condition where total pages cannot be less than current page */}
         <IndividualBook
           selectedBook={selectedBook.title}
           enteredBook={enteredBook}
