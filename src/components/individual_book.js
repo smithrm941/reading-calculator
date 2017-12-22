@@ -48,6 +48,7 @@ class IndividualBook extends Component {
         <form className="specific-book-data">
           <h1>Selected Book: <input type="text" ref="title" value={selectedBook} onChange={this.handleChange.bind(this)} readOnly/></h1>
           <img alt="No book selected or cover not available" src={coverPhoto} />
+          <h1>Total Pages: <input type="number" ref="total_pages" value={totalPages} onChange={this.handleChange.bind(this)} readOnly/></h1>
           <h1>Pages Left: <input type="number" ref="pages" value={pagesLeft} onChange={this.handleChange.bind(this)} readOnly/></h1>
           <button onClick={this.addBook.bind(this)}>Add Book</button>
         </form>
