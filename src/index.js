@@ -29,7 +29,8 @@ class App extends Component {
       startDate: '',
       endDate: '',
       books: [],
-      selectedBook: 'No book selected',
+      selectedBook: '',
+      enteredBook: ''
     }
   }
 
@@ -56,6 +57,12 @@ class App extends Component {
       });
     }
   };
+
+  handleEnteredBook(event) {
+    this.setState({
+      enteredBook: event.target.value
+    })
+  }
 
   handleCurrentPage(event) {
     if(event.target.value < 0) {
@@ -117,10 +124,10 @@ class App extends Component {
 
     //WIP: Getting book titles to display:::::
     const selectedBook = this.state.selectedBook;
-
+    const enteredBook = this.state.enteredBook;
     const currentPage = this.state.currentPage;
     const totalPages = this.state.totalPages;
-    const pagesLeft = totalPages - currentPage;
+    const pagesLeft = totalPages - currentPage
     const timeFrameNumber = this.state.timeFrameNumber;
     const timeFrameType = this.state.timeFrameType;
     const singularTimeFrameType = this.state.singularTimeFrameType;
@@ -138,7 +145,15 @@ class App extends Component {
               What book are you reading?
             </li>
             <li>
+              Search for books using the Google Books API:
               <BookSearch onSearchTermChange={term => this.bookSearch(term)}/>
+            </li>
+            <li>
+              If it's not there, enter a different title:
+            </li>
+            <li>
+              <input
+                onChange={event => this.handleEnteredBook(event)}/>
             </li>
             <li>
               <SearchResults
@@ -214,14 +229,9 @@ class App extends Component {
           </ul>
         </form>
 
-        {/* maybe this stuff should be in its own component? Then pages left can be rendered conditionally? */}
-        {/* ??????Hmmm, why are these things not being passed to the new component??????? */}
-          {/* <h1>Selected Book: {selectedBook.title}</h1>
-          <img alt="No book selected or cover not available" src={selectedBook.thumbnail} />
-          <h1>Pages Left: {pagesLeft}</h1> */}
-        {/* have some sort of condition where total pages cannot be less than current page */}
         <IndividualBook
           selectedBook={selectedBook.title}
+          enteredBook={enteredBook}
           coverPhoto={selectedBook.thumbnail}
           totalPages={totalPages}
           currentPage={currentPage}
