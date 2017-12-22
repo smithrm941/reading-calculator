@@ -7,13 +7,15 @@ class IndividualBook extends Component {
   }
 
   render() {
+    //both totalPages and currentPage must be numbers
+    //if one of them is not, things crash!!!
     const selectedBook = this.props.selectedBook
     const coverPhoto = this.props.coverPhoto
     const totalPages = this.props.totalPages
     const currentPage = this.props.currentPage
     const pagesLeft = this.props.pagesLeft
 
-    if(selectedBook && pagesLeft) {
+    if(selectedBook) {
       return (
       <div>
         <form className="specific-book-data">
@@ -24,7 +26,7 @@ class IndividualBook extends Component {
         </form>
       </div>
       )
-    } else if (!selectedBook && totalPages && pagesLeft) {
+    } else if (!selectedBook && pagesLeft) {
       if(pagesLeft >= 0) {
         return (
           <div>
@@ -33,12 +35,20 @@ class IndividualBook extends Component {
             <h1>Pages Left: {pagesLeft}</h1>
           </div>
         )
-      } else {
+      } else if (!totalPages && currentPage) {
         return (
           <div>
             {/* // <h1>Selected Book: {selectedBook.title}</h1>
             // <img alt="No book selected or cover not available" src={selectedBook.thumbnail} /> */}
-            <h1>Current page cannot be greater than total pages</h1>
+            <h1>Please enter the total number of pages in the book you're reading.</h1>
+          </div>
+        )
+      } else if (totalPages && currentPage && currentPage > totalPages) {
+        return (
+          <div>
+            {/* // <h1>Selected Book: {selectedBook.title}</h1>
+            // <img alt="No book selected or cover not available" src={selectedBook.thumbnail} /> */}
+            <h1>Current page cannot be higher than total pages.</h1>
           </div>
         )
       }
