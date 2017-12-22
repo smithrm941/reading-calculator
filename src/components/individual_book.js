@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 
 class IndividualBook extends Component {
+
+  handleChange(event) {
+    this.props.onChange(event.target.value);
+  }
+
   render() {
     const selectedBook = this.props.selectedBook
     const coverPhoto = this.props.coverPhoto
@@ -16,7 +21,6 @@ class IndividualBook extends Component {
           <img alt="No book selected or cover not available" src={coverPhoto} />
           <h1>Total Pages: <input type="number" ref="total_pages" value={totalPages} onChange={this.handleChange.bind(this)} readOnly/></h1>
           <h1>Pages Left: <input type="number" ref="pages" value={pagesLeft} onChange={this.handleChange.bind(this)} readOnly/></h1>
-          <button onClick={this.addBook.bind(this)}>Add Book</button>
         </form>
       </div>
       )
