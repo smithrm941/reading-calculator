@@ -4,7 +4,10 @@ class IndividualBook extends Component {
 
   componentDidMount() {
     console.log('Component has mounted')
+  }
 
+  handleChange(event) {
+    this.props.onChange(event.target.value);
   }
 
   addBook(event) {
@@ -33,6 +36,7 @@ class IndividualBook extends Component {
 
   render() {
     const selectedBook = this.props.selectedBook
+    const enteredBook = this.props.enteredBook
     const coverPhoto = this.props.coverPhoto
     const totalPages = this.props.totalPages
     const currentPage = this.props.currentPage
@@ -41,14 +45,25 @@ class IndividualBook extends Component {
     if(selectedBook && pagesLeft) {
       return (
       <div>
-        <form>
-          <h1>Selected Book: <input type="text" ref="title" value={selectedBook}/></h1>
+        <form className="specific-book-data">
+          <h1>Selected Book: <input type="text" ref="title" value={selectedBook} onChange={this.handleChange.bind(this)} readOnly/></h1>
           <img alt="No book selected or cover not available" src={coverPhoto} />
-          <h1>Pages Left: <input type="number" ref="pages" value={pagesLeft}/></h1>
+          <h1>Pages Left: <input type="number" ref="pages" value={pagesLeft} onChange={this.handleChange.bind(this)} readOnly/></h1>
           <button onClick={this.addBook.bind(this)}>Add Book</button>
         </form>
       </div>
       )
+    } else if(enteredBook && pagesLeft) {
+          return (
+          <div>
+            <form className="specific-book-data">
+              <h1>Selected Book: <input type="text" ref="title" value={enteredBook} onChange={this.handleChange.bind(this)} readOnly/></h1>
+              <img alt="No book selected or cover not available" src={coverPhoto} />
+              <h1>Pages Left: <input type="number" ref="pages" value={pagesLeft} onChange={this.handleChange.bind(this)} readOnly/></h1>
+              <button onClick={this.addBook.bind(this)}>Add Book</button>
+            </form>
+          </div>
+          )
     } else if (!selectedBook && totalPages && pagesLeft) {
       if(pagesLeft >= 0) {
         return (
@@ -69,7 +84,7 @@ class IndividualBook extends Component {
       }
     } else if (!selectedBook && !totalPages) {
       return (
-      <div><h1>Enter some stuff...</h1></div>
+      <div><h1>Keep your eye on this area to find out how many pages you have to read to meet your goals!</h1></div>
         // <h1>Selected Book: {selectedBook.title}</h1>
         // <img alt="No book selected or cover not available" src={selectedBook.thumbnail} />
         // <h1>Pages Left: {pagesLeft}</h1>

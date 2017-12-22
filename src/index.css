@@ -19,3 +19,7 @@ h3 {
 .book-cover {
   cursor: pointer;
 }
+
+.specific-book-data input {
+  border: none;
+}
