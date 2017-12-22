@@ -42,7 +42,7 @@ class IndividualBook extends Component {
     const currentPage = this.props.currentPage
     const pagesLeft = this.props.pagesLeft
 
-    if(selectedBook && pagesLeft) {
+    if(selectedBook) {
       return (
       <div>
         <form className="specific-book-data">
