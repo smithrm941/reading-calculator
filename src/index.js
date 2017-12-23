@@ -161,8 +161,6 @@ class App extends Component {
                 onBookSelect={selectedBook =>
                   this.setState({
                     selectedBook: selectedBook,
-                    //want to make other books off screen when a book is selected
-                    //but also how do we display the book on the page at the same time?
                     books: [],
                     totalPages: selectedBook.pageCount})}
               />
