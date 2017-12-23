@@ -22,7 +22,7 @@ class DateCalculator extends Component {
         <div>
         </div>
       )
-    } else if ((totalPages && currentPage) || (totalPages && !currentPage)) {
+    } else if ((totalPages && currentPage) || (totalPages && !currentPage) || (!totalPages && currentPage)) {
       if(!this.props.startDate || !this.props.endDate) {
         return (
           <div>
@@ -35,12 +35,16 @@ class DateCalculator extends Component {
             <h3>You can finish this book on time if you read {pagesLeft} pages per day!</h3>
           </div>
         )
-      } else if(Math.round(pagesLeft/daysBetweenDates(startDate, endDate)) > 0) {
+      } else if(Math.round(pagesLeft/daysBetweenDates(startDate, endDate)) >= 0) {
         return (
           <div>
             <h1>Based on the dates you chose:</h1>
             <h3>You can finish this book on time if you read {Math.round(pagesLeft/daysBetweenDates(startDate, endDate))} pages per day!</h3>
           </div>
+        )
+      } else if(currentPage > totalPages) {
+        return (
+          <div></div>
         )
       }
     }

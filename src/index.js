@@ -36,10 +36,10 @@ class App extends Component {
 
   bookSearch(term) {
     if(term) {
-      let options = {
+      /*let options = {
         key: process.env.REACT_APP_GOOGLE_BOOKS_API_KEY,
-      };
-      books.search(term, options, (error, results) => {
+      };*/
+      books.search(term, /*options,*/ (error, results) => {
         if ( !error ) {
           this.setState({
             books: results,
@@ -264,7 +264,6 @@ class App extends Component {
     )
   }
 }
-
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
