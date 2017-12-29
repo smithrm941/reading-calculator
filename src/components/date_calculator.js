@@ -39,7 +39,7 @@ class DateCalculator extends Component {
         return (
           <div>
             <h1>Based on the dates you chose:</h1>
-            <h3>You can finish this book on time if you read {Math.round(pagesLeft/daysBetweenDates(startDate, endDate))} pages per day!</h3>
+            <h3>You can finish this book on time if you read {Math.round(pagesLeft/(daysBetweenDates(startDate, endDate)+1))} pages per day!</h3>
           </div>
         )
       } else if(currentPage > totalPages) {

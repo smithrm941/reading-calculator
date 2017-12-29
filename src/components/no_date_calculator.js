@@ -12,11 +12,13 @@ class NoDateCalculator extends Component {
     const pagesPerTimeFrame = Math.round(pagesLeft/timeFrameNumber)
 
     if(!totalPages) {
+      //No calculation if there is no total page count::::
       return (
         <div>
         </div>
       )
     } else if ((totalPages && currentPage) || (totalPages && !currentPage)) {
+      //If there is a total page count::::
       if (!timeFrameNumber) {
         return (
           <div>
