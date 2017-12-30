@@ -62,13 +62,20 @@ class NoDateCalculator extends Component {
               <h3>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {Math.round(pagesPerTimeFrame/30)} pages per day.</h3>
             </div>
           )
-        } else {
-          return (
-            <div>
-              <h1>Based on the time frame you chose:</h1>
-              <h3>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {pagesPerTimeFrame} pages per day.</h3>
-            </div>
-          )
+        } else if (timeFrameType === "days"){
+          if(currentPage > totalPages) {
+            return (
+              <div>
+              </div>
+            )
+          } else {
+            return (
+              <div>
+                <h1>Based on the time frame you chose:</h1>
+                <h3>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {pagesPerTimeFrame} pages per day.</h3>
+              </div>
+            )
+          }
         }
       }
     }
