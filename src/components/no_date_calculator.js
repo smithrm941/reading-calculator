@@ -47,28 +47,42 @@ class NoDateCalculator extends Component {
               </div>
             )
           }
-      } else {
+      } else if (timeFrameNumber > 1){
         if(timeFrameType === "weeks") {
-          return (
-            <div>
-              <h1>Based on the time frame you chose:</h1>
-              <h3>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {Math.round(pagesPerTimeFrame/7)} pages per day.</h3>
-            </div>
-          )
-        } else if(timeFrameType === "months") {
-          return (
-            <div>
-              <h1>Based on the time frame you chose:</h1>
-              <h3>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {Math.round(pagesPerTimeFrame/30)} pages per day.</h3>
-            </div>
-          )
-        } else if (timeFrameType === "days"){
-          if(currentPage > totalPages) {
+          if(totalPages < currentPage) {
             return (
               <div>
               </div>
             )
           } else {
+            return (
+              <div>
+                <h1>Based on the time frame you chose:</h1>
+                <h3>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {Math.round(pagesPerTimeFrame/7)} pages per day.</h3>
+              </div>
+            )
+          }
+        } else if(timeFrameType === "months") {
+          if(totalPages < currentPage) {
+            return (
+              <div>
+              </div>
+            )
+          } else {
+            return (
+              <div>
+                <h1>Based on the time frame you chose:</h1>
+                <h3>You can finish this book in {timeFrameNumber} {timeFrameType} by reading {Math.round(pagesPerTimeFrame/30)} pages per day.</h3>
+              </div>
+            )
+          }
+        } else if (timeFrameType === "days"){
+          if(totalPages < currentPage) {
+            return (
+              <div>
+              </div>
+            )
+          } else if (totalPages > currentPage) {
             return (
               <div>
                 <h1>Based on the time frame you chose:</h1>
