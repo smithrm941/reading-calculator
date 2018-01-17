@@ -5,9 +5,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import registerServiceWorker from './registerServiceWorker';
-
-import DateCalculator from './components/date_calculator'
-import NoDateCalculator from './components/no_date_calculator'
 import BookSearch from './components/book_search'
 import SearchResults from './components/search_results'
 import CalculatorContainer from './components/calculator_container'

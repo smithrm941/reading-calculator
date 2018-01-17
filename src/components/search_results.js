@@ -4,14 +4,12 @@ import SelectedBook from './selected_book'
 
 const SearchResults = (props) => {
   const individualSearchResults = props.books.map((book) => {
-    if(book.pageCount) {
       return (
           <SelectedBook
             onBookSelect={props.onBookSelect}
             key={book.id}
             book={book}/>
       );
-    }
   })
   return (
     <ul className="search-results">
