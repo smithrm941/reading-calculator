@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import NoDateCalculator from './no_date_calculator'
+import DateCalculator from './date_calculator'
 
-class IndividualBook extends Component {
+class CalculatorContainer extends Component {
 
   handleChange(event) {
     this.props.onChange(event.target.value);
@@ -13,6 +15,12 @@ class IndividualBook extends Component {
     const totalPages = this.props.totalPages
     const currentPage = this.props.currentPage
     const pagesLeft = this.props.pagesLeft
+    const timeFrameNumber = this.props.timeFrameNumber
+    const timeFrameType = this.props.timeFrameType
+    const singularTimeFrameType = this.props.singularTimeFrameType
+    const startDate = this.props.startDate
+    const endDate = this.props.endDate
+
 
     if(selectedBook) {
       if(pagesLeft >= 0) {
@@ -24,6 +32,24 @@ class IndividualBook extends Component {
               <h1>Total Pages: <input type="number" ref="total_pages" value={totalPages} onChange={this.handleChange.bind(this)} readOnly/></h1>
               <h1>Pages Left: <input type="number" ref="pages" value={pagesLeft} onChange={this.handleChange.bind(this)} readOnly/></h1>
             </form>
+            <NoDateCalculator
+              totalPages={totalPages}
+              currentPage={currentPage}
+              pagesLeft={pagesLeft}
+              timeFrameNumber={timeFrameNumber}
+              timeFrameType={timeFrameType}
+              singularTimeFrameType={singularTimeFrameType}
+            />
+            <DateCalculator
+              totalPages={totalPages}
+              currentPage={currentPage}
+              pagesLeft={pagesLeft}
+              timeFrameNumber={timeFrameNumber}
+              timeFrameType={timeFrameType}
+              singularTimeFrameType={singularTimeFrameType}
+              startDate={startDate}
+              endDate={endDate}
+            />
           </div>
         )
       } else if ((totalPages && currentPage) && pagesLeft < 0) {
@@ -33,7 +59,7 @@ class IndividualBook extends Component {
               <h1>Selected Book: <input type="text" ref="title" value={selectedBook} onChange={this.handleChange.bind(this)} readOnly/></h1>
               <img alt="No book selected or cover not available" src={coverPhoto} />
               <h1>Total Pages: <input type="number" ref="total_pages" value={totalPages} onChange={this.handleChange.bind(this)} readOnly/></h1>
-              <h1>Current page cannot be greater than number of pages in the book! Tsk tsk...</h1>
+              <h1>Current page cannot be greater than total pages</h1>
             </form>
           </div>
         )
@@ -55,6 +81,24 @@ class IndividualBook extends Component {
               <h1>Selected Book: <input type="text" ref="title" value={enteredBook} onChange={this.handleChange.bind(this)} readOnly/></h1>
               <h1>Pages Left: <input type="number" ref="pages" value={pagesLeft} onChange={this.handleChange.bind(this)} readOnly/></h1>
             </form>
+            <NoDateCalculator
+              totalPages={totalPages}
+              currentPage={currentPage}
+              pagesLeft={pagesLeft}
+              timeFrameNumber={timeFrameNumber}
+              timeFrameType={timeFrameType}
+              singularTimeFrameType={singularTimeFrameType}
+            />
+            <DateCalculator
+              totalPages={totalPages}
+              currentPage={currentPage}
+              pagesLeft={pagesLeft}
+              timeFrameNumber={timeFrameNumber}
+              timeFrameType={timeFrameType}
+              singularTimeFrameType={singularTimeFrameType}
+              startDate={startDate}
+              endDate={endDate}
+            />
           </div>
         )
       } else if ((totalPages && currentPage) && pagesLeft < 0) {
@@ -62,7 +106,7 @@ class IndividualBook extends Component {
           <div>
             <form className="specific-book-data">
               <h1>Selected Book: <input type="text" ref="title" value={enteredBook} onChange={this.handleChange.bind(this)} readOnly/></h1>
-              <h1>Current page cannot be greater than number of pages in the book! Tsk tsk...</h1>
+              <h1>Current page cannot be greater than total pages</h1>
             </form>
           </div>
         )
@@ -80,6 +124,24 @@ class IndividualBook extends Component {
         return (
           <div>
             <h1>Pages Left: {pagesLeft}</h1>
+            <NoDateCalculator
+              totalPages={totalPages}
+              currentPage={currentPage}
+              pagesLeft={pagesLeft}
+              timeFrameNumber={timeFrameNumber}
+              timeFrameType={timeFrameType}
+              singularTimeFrameType={singularTimeFrameType}
+            />
+            <DateCalculator
+              totalPages={totalPages}
+              currentPage={currentPage}
+              pagesLeft={pagesLeft}
+              timeFrameNumber={timeFrameNumber}
+              timeFrameType={timeFrameType}
+              singularTimeFrameType={singularTimeFrameType}
+              startDate={startDate}
+              endDate={endDate}
+            />
           </div>
         )
       } else if (pagesLeft < 0) {
@@ -97,4 +159,4 @@ class IndividualBook extends Component {
   }
 }
 
-export default IndividualBook;
+export default CalculatorContainer;

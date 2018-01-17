@@ -10,10 +10,7 @@ import DateCalculator from './components/date_calculator'
 import NoDateCalculator from './components/no_date_calculator'
 import BookSearch from './components/book_search'
 import SearchResults from './components/search_results'
-import IndividualBook from './components/individual_book'
-
-
-//Google API stuff:::::::::
+import CalculatorContainer from './components/calculator_container'
 import books from 'google-books-search'
 
 
@@ -121,8 +118,6 @@ class App extends Component {
 
   render() {
     const books = this.state.books;
-
-    //WIP: Getting book titles to display:::::
     const selectedBook = this.state.selectedBook;
     const enteredBook = this.state.enteredBook;
     const currentPage = this.state.currentPage;
@@ -227,27 +222,10 @@ class App extends Component {
           </ul>
         </form>
 
-        <IndividualBook
+        <CalculatorContainer
           selectedBook={selectedBook.title}
           enteredBook={enteredBook}
           coverPhoto={selectedBook.thumbnail}
-          totalPages={totalPages}
-          currentPage={currentPage}
-          pagesLeft={pagesLeft}
-        />
-
-        <DateCalculator
-          totalPages={totalPages}
-          currentPage={currentPage}
-          pagesLeft={pagesLeft}
-          timeFrameNumber={timeFrameNumber}
-          timeFrameType={timeFrameType}
-          singularTimeFrameType={singularTimeFrameType}
-          startDate={startDate}
-          endDate={endDate}
-        />
-
-        <NoDateCalculator
           totalPages={totalPages}
           currentPage={currentPage}
           pagesLeft={pagesLeft}
