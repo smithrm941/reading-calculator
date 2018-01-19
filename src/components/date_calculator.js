@@ -31,14 +31,14 @@ class DateCalculator extends Component {
       } else if(this.props.startDate >= this.props.endDate) {
         return (
           <div>
-            <h3>Please choose an end date that is later than your start date</h3>
+            <h4>Please choose an end date that is later than your start date</h4>
           </div>
         )
       } else if(Math.round(pagesLeft/daysBetweenDates(startDate, endDate)) >= 0) {
         return (
           <div>
-            <h3>If you read each day between {startDate.toDateString().substring(4, 15)} and {endDate.toDateString().substring(4, 15)}</h3>
-            <h3>You can finish this book on time by reading {Math.round(pagesLeft/(daysBetweenDates(startDate, endDate)+1))} pages per day!</h3>
+            <h4>If you read each day between {startDate.toDateString().substring(4, 15)} and {endDate.toDateString().substring(4, 15)}</h4>
+            <h4>You can finish with {Math.round(pagesLeft/(daysBetweenDates(startDate, endDate)+1))} pages per day!</h4>
           </div>
         )
       } else if(currentPage > totalPages) {

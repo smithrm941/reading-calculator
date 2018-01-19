@@ -27,15 +27,14 @@ class CalculatorContainer extends Component {
         return (
           <div>
             <form className="specific-book-data">
-              <h3>Selected Book:
-              <textarea className="selectedBook" type="text" ref="title" value={selectedBook} onChange={this.handleChange.bind(this)} readOnly/></h3>
+              <h4><textarea className="selectedBook" type="text" ref="title" value={selectedBook} onChange={this.handleChange.bind(this)} readOnly/></h4>
               <img className="selectedBookCover" alt="No book selected or cover not available" src={coverPhoto} />
               <div className="totalPages">
-                <h3>Total Pages:</h3>
+                <h4>Total Pages:</h4>
                 <input type="number" ref="total_pages" value={totalPages} onChange={this.handleChange.bind(this)} readOnly/>
               </div>
               <div className="pagesLeft">
-                <h3>Pages Left:</h3>
+                <h4>Pages Left:</h4>
                 <input type="number" ref="pages" value={pagesLeft} onChange={this.handleChange.bind(this)} readOnly/>
               </div>
             </form>
@@ -63,15 +62,14 @@ class CalculatorContainer extends Component {
         return (
           <div>
             <form className="specific-book-data">
-              <h3>Selected Book:
-              <textarea className="selectedBook" type="text" ref="title" value={selectedBook} onChange={this.handleChange.bind(this)} readOnly/>
-              </h3>
+              <h4><textarea className="selectedBook" type="text" ref="title" value={selectedBook} onChange={this.handleChange.bind(this)} readOnly/>
+              </h4>
               <img alt="No book selected or cover not available" src={coverPhoto} />
               <div className="totalPages">
-                <h3>Total Pages:</h3>
+                <h4>Total Pages:</h4>
                 <input type="number" ref="total_pages" value={totalPages} onChange={this.handleChange.bind(this)} readOnly/>
               </div>
-              <h3>Current page cannot be greater than total pages</h3>
+              <h4>Current page cannot be greater than total pages</h4>
             </form>
           </div>
         )
@@ -79,9 +77,8 @@ class CalculatorContainer extends Component {
         return (
           <div>
             <form className="specific-book-data">
-              <h3>Selected Book:
-              <textarea className="selectedBook" type="text" ref="title" value={selectedBook} onChange={this.handleChange.bind(this)} readOnly/>
-              </h3>
+              <h4><textarea className="selectedBook" type="text" ref="title" value={selectedBook} onChange={this.handleChange.bind(this)} readOnly/>
+              </h4>
               <img alt="No book selected or cover not available" src={coverPhoto} />
             </form>
           </div>
@@ -92,11 +89,10 @@ class CalculatorContainer extends Component {
         return (
           <div>
             <form className="specific-book-data">
-              <h3>Selected Book:
-              <textarea className="selectedBook" type="text" ref="title" value={enteredBook} onChange={this.handleChange.bind(this)} readOnly/>
-              </h3>
+              <h4><textarea className="selectedBook" type="text" ref="title" value={enteredBook} onChange={this.handleChange.bind(this)} readOnly/>
+              </h4>
               <div className="pagesLeft">
-                <h3>Pages Left:</h3>
+                <h4>Pages Left:</h4>
                 <input type="number" ref="pages" value={pagesLeft} onChange={this.handleChange.bind(this)} readOnly/>
               </div>
             </form>
@@ -124,9 +120,8 @@ class CalculatorContainer extends Component {
         return (
           <div>
             <form className="specific-book-data">
-              <h3>Selected Book:
-              <textarea className="selectedBook" type="text" ref="title" value={enteredBook} onChange={this.handleChange.bind(this)} readOnly/></h3>
-              <h3>Current page cannot be greater than total pages</h3>
+              <h4><textarea className="selectedBook" type="text" ref="title" value={enteredBook} onChange={this.handleChange.bind(this)} readOnly/></h4>
+              <h4>Current page cannot be greater than total pages</h4>
             </form>
           </div>
         )
@@ -134,8 +129,7 @@ class CalculatorContainer extends Component {
         return (
           <div>
             <form className="specific-book-data">
-              <h3>Selected Book:
-              <textarea className="selectedBook" type="text" ref="title" value={enteredBook} onChange={this.handleChange.bind(this)} readOnly/></h3>
+              <h4><textarea className="selectedBook" type="text" ref="title" value={enteredBook} onChange={this.handleChange.bind(this)} readOnly/></h4>
             </form>
           </div>
         )
@@ -144,7 +138,7 @@ class CalculatorContainer extends Component {
       if(pagesLeft >= 0) {
         return (
           <div>
-            <h3>Pages Left: {pagesLeft}</h3>
+            <h4>Pages Left: {pagesLeft}</h4>
             <NoDateCalculator
               totalPages={totalPages}
               currentPage={currentPage}
@@ -168,16 +162,16 @@ class CalculatorContainer extends Component {
       } else if (pagesLeft < 0) {
         return (
           <div>
-            <h3>Current page cannot be greater than total pages</h3>
+            <h4>Current page cannot be greater than total pages</h4>
           </div>
         )
       }
     } else if ((!selectedBook || !enteredBook) && !totalPages) {
       return (
       <div>
-        <h3>Keep your eye on this area to find out how many pages you have to read to meet your goals!</h3>
-        <h3></h3>
-        <h3>Make sure to take a screenshot for your records!</h3>
+        <h4>Keep your eye on this area to find out how many pages you have to read to meet your goals!</h4>
+        <h4></h4>
+        <h4>Make sure to take a screenshot for your records!</h4>
       </div>
       )
     }
