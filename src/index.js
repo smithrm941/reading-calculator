@@ -26,6 +26,7 @@ class App extends Component {
       selectedBook: '',
       enteredBook: ''
     }
+    this.baseState = this.state;
   }
 
   bookSearch(term) {
@@ -113,6 +114,10 @@ class App extends Component {
     })
   }
 
+  clearForm = () => {
+    this.setState(this.baseState)
+  }
+
   render() {
     const books = this.state.books;
     const selectedBook = this.state.selectedBook;
@@ -128,40 +133,36 @@ class App extends Component {
 
     return (
       <div>
-        <h1>How Many Pages Per Day to Finish That Book?*</h1>
+      <div className="info-entry-form">
+        <h3 className="pageTitle">How Many Pages Per Day to Finish That Book?*</h3>
         <h6>*<i>Approximately</i></h6>
-        <b>Bold text</b> = required
-        <form className="page-numbers-form">
+        <form id="info-entry-form">
           <ul>
             <li>
-              What book are you reading?
+              <h4>What are you reading?</h4>
             </li>
             <li>
-              Search for books using the Google Books API:
               <BookSearch onSearchTermChange={term => this.bookSearch(term)}/>
             </li>
             <li>
-              If it's not there, enter a different title:
-            </li>
-            <li>
               <input
+                placeholder= "Or enter any title"
                 onChange={event => this.handleEnteredBook(event)}/>
             </li>
             <li>
-              <SearchResults
-                books={books}
-                onBookSelect={selectedBook =>
-                  this.setState({
-                    selectedBook: selectedBook,
-                    books: [],
-                    totalPages: selectedBook.pageCount})}
+             <SearchResults
+              books={books}
+              onBookSelect={selectedBook =>
+                this.setState({
+                  selectedBook: selectedBook,
+                  books: [],
+                  totalPages: selectedBook.pageCount}
+                )}
               />
             </li>
             <li>
-              <b>How many pages are in that book?</b>
-            </li>
-            <li>
               <input
+                placeholder="Total Pages"
                 type="number"
                 min="0"
                 className="total-pages"
@@ -169,10 +170,8 @@ class App extends Component {
                 onChange={event => this.handleTotalPages(event)}/>
             </li>
             <li>
-              What page are you on right now?
-            </li>
-            <li>
               <input
+                placeholder="Current Page"
                 type="number"
                 min="0"
                 className="current-page"
@@ -180,13 +179,11 @@ class App extends Component {
                 onChange={event => this.handleCurrentPage(event)}/>
             </li>
             <li>
-              <b>When do you want to be done with your book?</b>
-            </li>
-            <li>
-              <i>Choose a time frame:</i>
+              <b>When do you want to finish?</b>
             </li>
             <li>
               <input
+                placeholder="Enter a Number"
                 type="number"
                 min="1"
                 className="time-frame-number"
@@ -202,23 +199,26 @@ class App extends Component {
             </li>
             <br></br>
             <li>
-              <i>Or choose specific dates:</i>
+              <i>Or choose dates:</i>
             </li>
-            <li>When do you want to start or resume reading?</li>
+            <li></li>
+            <li>Start/Resume:</li>
             <li><input
               id="startDate"
               type="date"
               onChange={event => this.handleStartDate(event)}/>
             </li>
-            <li>When do you want to finish this book?</li>
+            <li>Finish:</li>
             <li><input
               id="endDate"
               type="date"
               onChange={event => this.handleEndDate(event)}/>
             </li>
           </ul>
+          <input type="button" name="clearForm" value="Clear Form" onClick={this.clearForm}/>
         </form>
-
+      </div>
+      <div className="results-calculator">
         <CalculatorContainer
           selectedBook={selectedBook.title}
           enteredBook={enteredBook}
@@ -232,8 +232,8 @@ class App extends Component {
           startDate={startDate}
           endDate={endDate}
         />
-
       </div>
+    </div>
     )
   }
 }
