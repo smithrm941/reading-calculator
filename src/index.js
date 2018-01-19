@@ -137,6 +137,7 @@ class App extends Component {
         <h3 className="pageTitle">How Many Pages Per Day to Finish That Book?*</h3>
         <h6>*<i>Approximately</i></h6>
         <form id="info-entry-form">
+          <input type="button" name="clearForm" value="Clear Form" onClick={this.clearForm}/>
           <ul>
             <li>
               <h4>What are you reading?</h4>
@@ -215,7 +216,6 @@ class App extends Component {
               onChange={event => this.handleEndDate(event)}/>
             </li>
           </ul>
-          <input type="button" name="clearForm" value="Clear Form" onClick={this.clearForm}/>
         </form>
       </div>
       <div className="results-calculator">
