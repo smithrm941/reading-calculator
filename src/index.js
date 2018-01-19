@@ -204,7 +204,7 @@ class App extends Component {
             <li>
               <i>Or choose specific dates:</i>
             </li>
-            <li>When do you want to start reading?</li>
+            <li>When do you want to start or resume reading?</li>
             <li><input
               id="startDate"
               type="date"
