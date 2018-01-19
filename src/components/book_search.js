@@ -12,6 +12,7 @@ class BookSearch extends Component {
     return (
       <div className="search-bar">
         <input
+          placeholder= "Search Google Books"
           value= {this.state.searchTerm}
           onChange={event => this.onInputChange(event.target.value)} />
       </div>
