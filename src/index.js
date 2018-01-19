@@ -128,6 +128,7 @@ class App extends Component {
 
     return (
       <div>
+      <div className="info-entry-form">
         <h1>How Many Pages Per Day to Finish That Book?*</h1>
         <h6>*<i>Approximately</i></h6>
         <b>Bold text</b> = required
@@ -148,13 +149,14 @@ class App extends Component {
                 onChange={event => this.handleEnteredBook(event)}/>
             </li>
             <li>
-              <SearchResults
-                books={books}
-                onBookSelect={selectedBook =>
-                  this.setState({
-                    selectedBook: selectedBook,
-                    books: [],
-                    totalPages: selectedBook.pageCount})}
+             <SearchResults
+              books={books}
+              onBookSelect={selectedBook =>
+                this.setState({
+                  selectedBook: selectedBook,
+                  books: [],
+                  totalPages: selectedBook.pageCount}
+                )}
               />
             </li>
             <li>
@@ -218,7 +220,8 @@ class App extends Component {
             </li>
           </ul>
         </form>
-
+      </div>
+      <div className="results-calculator">
         <CalculatorContainer
           selectedBook={selectedBook.title}
           enteredBook={enteredBook}
@@ -232,8 +235,8 @@ class App extends Component {
           startDate={startDate}
           endDate={endDate}
         />
-
       </div>
+    </div>
     )
   }
 }
