@@ -8,4 +8,4 @@ Right now, users are encouraged to take a screenshot of their estimated pages pe
 
 Live: https://reading-calculator.herokuapp.com
 
-<img src="Reading Calculator Demo GIF.gif"/>
+<img src="ReadingCalcDemoGIF.gif"/>
