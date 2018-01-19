@@ -37,7 +37,7 @@ class DateCalculator extends Component {
       } else if(Math.round(pagesLeft/daysBetweenDates(startDate, endDate)) >= 0) {
         return (
           <div>
-            <h3>Based on the dates you chose:</h3>
+            <h3>If you read each day between {startDate.toDateString().substring(4, 15)} and {endDate.toDateString().substring(4, 15)}</h3>
             <h3>You can finish this book on time by reading {Math.round(pagesLeft/(daysBetweenDates(startDate, endDate)+1))} pages per day!</h3>
           </div>
         )
