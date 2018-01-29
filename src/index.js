@@ -116,8 +116,6 @@ class App extends Component {
 
   clearForm = () => {
     this.setState(this.baseState)
-    let googleBookSearch = document.getElementById('search-bar')
-    googleBookSearch.innerHTML = ''
     let startDate = document.getElementById('startDate')
     let endDate = document.getElementById('endDate')
     startDate.value = ''
@@ -143,7 +141,7 @@ class App extends Component {
         <h3 className="pageTitle">How Many Pages Per Day to Finish That Book?*</h3>
         <h6>*<i>Approximately</i></h6>
         <form id="info-entry-form">
-          <input type="button" name="clearForm" value="Clear Form" onClick={this.clearForm}/>
+          <input id="clear-form-button" type="button" name="clearForm" value="Clear Form" onClick={this.clearForm}/>
           <ul>
             <li>
               <h4>What are you reading?</h4>
