@@ -116,6 +116,12 @@ class App extends Component {
 
   clearForm = () => {
     this.setState(this.baseState)
+    let googleBookSearch = document.getElementById('search-bar')
+    googleBookSearch.innerHTML = ''
+    let startDate = document.getElementById('startDate')
+    let endDate = document.getElementById('endDate')
+    startDate.value = ''
+    endDate.value = ''
   }
 
   render() {
