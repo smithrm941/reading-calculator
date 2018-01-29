@@ -91,6 +91,10 @@ class CalculatorContainer extends Component {
             <form className="specific-book-data">
               <h4><textarea className="selectedBook" type="text" ref="title" value={enteredBook} onChange={this.handleChange.bind(this)} readOnly/>
               </h4>
+              <div className="totalPages">
+                <h4>Total Pages:</h4>
+                <input type="number" ref="total_pages" value={totalPages} onChange={this.handleChange.bind(this)} readOnly/>
+              </div>
               <div className="pagesLeft">
                 <h4>Pages Left:</h4>
                 <input type="number" ref="pages" value={pagesLeft} onChange={this.handleChange.bind(this)} readOnly/>
